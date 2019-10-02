@@ -1,1 +1,1 @@
-web: bokeh serve --port=$PORT --host=roentgen-gui.herokuapp.com --host=* --address=0.0.0.0 --use-xheaders ./gui
+web: bokeh serve --port=$PORT --allow-websocket-origin=roentgen-gui.herokuapp.com --address=0.0.0.0 --use-xheaders ./gui
