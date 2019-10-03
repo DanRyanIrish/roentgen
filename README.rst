@@ -54,3 +54,13 @@ Documentation
 =============
 
 http://roentgen.readthedocs.io/en/latest/
+
+GUI
+===
+A working version of the GUI can be found installed on heroku.
+
+https://roentgen-gui.herokuapp.com/gui
+
+To run it locally use the following command
+
+   bokeh serve --show <roengten_directory>/gui
