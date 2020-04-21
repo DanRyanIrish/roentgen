@@ -18,8 +18,8 @@ Overview
     :target: https://roentgen.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. |build| image:: https://travis-ci.org/ehsteve/roentgen.svg?branch=master
-    :target: https://travis-ci.org/ehsteve/roentgen
+.. |build| image:: https://circleci.com/gh/ehsteve/roentgen.svg?style=svg
+    :target: https://circleci.com/gh/ehsteve/roentgen
     :alt: Build Status
 
 .. |coverage| image:: https://coveralls.io/repos/github/ehsteve/roentgen/badge.svg?branch=master
@@ -57,10 +57,27 @@ http://roentgen.readthedocs.io/en/latest/
 
 GUI
 ===
-A working version of the GUI can be found installed on heroku.
+This package provides a gui interface to quickly investigate the absorption
+and transmission of x-rays through different materials. It is based on
+`bokeh <https://docs.bokeh.org/en/latest/>`_. A working version
+of the GUI can be found installed on `heroku <https://www.heroku.com>`_.
 
 https://roentgen-gui.herokuapp.com/gui
 
 To run it locally use the following command
 
+::
+   
    bokeh serve --show <roengten_directory>/gui
+
+
+Data Sources
+============
+This package includes on a number of data files which were
+translated and imported from a few key sources. The package
+developers would like to thank the following data providers
+
+* The U.S National Institute of Standards and Technology (NIST)
+* The Center for X-ray Optics and Advanced Light Source at the Lawrence Berkeley National Laboratory
+
+For more information see the README in data directory.
