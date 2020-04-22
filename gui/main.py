@@ -132,7 +132,7 @@ detector_thickness_input = TextInput(title='thickness', value=str(DEFAULT_DETECT
 detector_density_input = TextInput(title='density', value=str(DEFAULT_DETECTOR_DENSITY))
 
 p = Paragraph(text="", width=500)
-p.text = "Messages: "
+p.text = f"Running roentgen version {roentgen.__version__}"
 
 columns = [
     TableColumn(field="x", title="energy [keV]"),
@@ -140,12 +140,9 @@ columns = [
 ]
 data_table = DataTable(source=source, columns=columns, width=400, height=700)
 
-
-# the download button
 download_button = Button(label="Download", button_type="success")
 download_button.js_on_event(ButtonClick, CustomJS(args=dict(source=source),
                                                   code=open(join(dirname(__file__), "download.js")).read()))
-
 
 def convert_air_pressure(value, current_unit, new_unit):
     if current_unit == "atm":
@@ -165,7 +162,6 @@ def convert_air_pressure(value, current_unit, new_unit):
 
 def update_response(attrname, old, new):
     # check whether the input variables have changed and update the response
-    # accordingly
     global response
 
     if not material_input.disabled:
@@ -216,8 +212,6 @@ def update_response(attrname, old, new):
 
 def update_data(attrname, old, new):
 
-    p.text = 'Messages: '
-
     if plot.x_range.start < DEFAULT_ENERGY_LOW:
         energy = u.Quantity(np.arange(DEFAULT_ENERGY_LOW, plot.x_range.end,
                                   DEFAULT_ENERGY_RESOLUTION), "keV")
@@ -228,12 +222,6 @@ def update_data(attrname, old, new):
     y = response.response(energy)
 
     plot.title.text = f"{response}"
-    #p.text += f'material {this_material_str} not recognized'
-
-    #plot_title += f" {air.name} {air.density.to('g / cm**3'):.2E} {air.thickness:.2f}"
-
-    #plot_title += f" {this_detector.name} {this_detector.thickness:.2f}"
-    #p.text += f'detector {this_detector_material_str} not recognized'
 
     if plot_checkbox_group.active:
         y = np.log10(response.response(energy))
